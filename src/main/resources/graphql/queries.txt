@@ -1,0 +1,60 @@
+mutation {
+    createUser(
+        name:"Rupesh Ahirwar",
+        phone:"81739038",
+        email:"rupesh@123",
+        password:"fizzy"
+    ){
+        name,
+        userId
+    }
+}
+
+mutation {
+    deleteUser(userId: 2)
+}
+
+query{
+    getUsers{
+        name
+        userId
+    }
+    getUser(userId:1){
+        name
+        userId
+        email
+        password
+    }
+}
+
+
+
+mutation{
+    createOrder(
+        orderDetail:"Sofa"
+        address:"Mumbai"
+        price:15000
+        userId:1
+    ){
+        orderId
+        orderDetail
+        price
+        user{
+            userId
+            name
+            email
+        }
+    }
+}
+
+
+query{
+    getUsers{
+        userId
+        orders{
+            orderId
+            orderDetail
+            price
+        }
+    }
+}
